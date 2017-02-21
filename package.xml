@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>usb_serial_for_android_catkin</name>
+  <version>0.2.0</version>
+  <description>The usb_serial_for_android_catkin package</description>
+
+  <maintainer email="opensource@hoho.com">Mike Wakerly</maintainer>
+  <author email="opensource@hoho.com">Mike Wakerly</author>
+
+  <license>LGPLv2.1</license>
+
+  <url type="website">https://github.com/mik3y/usb-serial-for-android</url>
+  <url type="repository">https://github.com/ekumenlabs/usb-serial-for-android</url>
+  <url type="licence">http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rosjava_build_tools</build_depend>
+
+  <export>
+  </export>
+</package>
