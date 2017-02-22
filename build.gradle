@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2017 Juan Ignacio Ubeira
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14.1'
 }
@@ -24,30 +8,8 @@ buildscript {
 
 apply plugin: 'catkin'
 
-
-allprojects {
-    /* A github url provides a good standard unique name for your project */
-    group 'com.github.rosjava.usb_serial_for_android_catkin_sampke'
-    version = project.catkin.pkg.version
-}
-
+// See Module's build.gradle for group name and version.
 subprojects {
-    /*
-     * The android plugin configures a few things:
-     *
-     *  - local deployment repository : where it dumps the jars and packaged artifacts)
-     *  - local maven repositories    : where it finds your locally installed/built artifacts)
-     *  - external maven repositories : where it goes looking if it can't find dependencies locally
-     *  - android build tools version : which version we use across the board
-     *
-     * To modify, or add repos to the default external maven repositories list, pull request against this code:
-     *
-     *   https://github.com/rosjava/rosjava_bootstrap/blob/kinetic/gradle_plugins/src/main/groovy/org/ros/gradle_plugins/RosPlugin.groovy#L31
-     *
-     * To modify the build tools version, pull request against this code:
-     *
-     *   https://github.com/rosjava/rosjava_bootstrap/blob/kinetic/gradle_plugins/src/main/groovy/org/ros/gradle_plugins/RosAndroid.groovy#L14
-     */
     apply plugin: 'ros-android'
 
     afterEvaluate { project ->

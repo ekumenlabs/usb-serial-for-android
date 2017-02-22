@@ -2,7 +2,7 @@
 <package>
   <name>usb_serial_for_android_catkin</name>
   <version>0.2.0</version>
-  <description>The usb_serial_for_android_catkin package</description>
+  <description>A catkin wrapper for usb_serial_for_android package</description>
 
   <maintainer email="opensource@hoho.com">Mike Wakerly</maintainer>
   <author email="opensource@hoho.com">Mike Wakerly</author>
