@@ -29,7 +29,7 @@ configurations {
 }
 
 signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
@@ -46,25 +46,9 @@ def isReleaseBuild() {
 }
 
 uploadArchives {
-    def sonatypeRepositoryUrl
-    if (isReleaseBuild()) {
-        println 'RELEASE BUILD'
-        sonatypeRepositoryUrl = hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL
-                : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-    } else {
-        println 'SNAPSHOT BUILD'
-        sonatypeRepositoryUrl = hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
-                : "https://oss.sonatype.org/content/repositories/snapshots/"
-    }
-
     configuration = configurations.archives
     repositories.mavenDeployer {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-        repository(url: sonatypeRepositoryUrl) {
-            authentication(userName: getRepositoryUsername(),
-                    password: getRepositoryPassword())
-        }
 
         pom.artifactId = 'usb-serial-for-android'
         pom.project {

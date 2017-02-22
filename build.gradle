@@ -1,16 +1,25 @@
-// Top-level gradle script.
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-    }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
 }
 
-allprojects {
-    repositories {
-        mavenCentral()
+buildscript {
+    apply from: "https://github.com/rosjava/android_core/raw/kinetic/buildscript.gradle"
+}
+
+apply plugin: 'catkin'
+
+// See Module's build.gradle for group name and version.
+subprojects {
+    apply plugin: 'ros-android'
+
+    afterEvaluate { project ->
+        android {
+            // Exclude a few files that are duplicated across our dependencies and
+            // prevent packaging Android applications.
+            packagingOptions {
+                exclude "META-INF/LICENSE.txt"
+                exclude "META-INF/NOTICE.txt"
+            }
+        }
     }
 }
